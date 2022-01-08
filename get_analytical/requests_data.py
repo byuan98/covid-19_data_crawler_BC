@@ -4,7 +4,9 @@
 # @File requests_data.py
 # @Software: PyCharm
 
-# 原始数据的获取
+"""
+    原始数据的获取
+"""
 import requests
 
 

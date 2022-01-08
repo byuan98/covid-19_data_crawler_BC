@@ -4,8 +4,8 @@
 # @File main.py
 # @Software: PyCharm
 
-import sys
 import os
+import sys
 
 import constant.path_constant
 

@@ -42,7 +42,9 @@ def saveData(databaseName, dataGlobalTuple, dataChinaTuple, dataChinaCityTuple):
         print(e)
 
 
-# 创建全球疫情当日数据信息表
+"""
+    创建全球疫情当日数据信息表
+"""
 def globalDataTableCreate(databaseName):
     conn = sqlite3.connect(databaseName)
 
@@ -58,16 +60,21 @@ def globalDataTableCreate(databaseName):
                         dead number not null        
                         )
                         ''' % (today)
+        # 获取游标
+        cursor = conn.cursor()
 
-        cursor = conn.cursor()  # 获取游标
-        cursor.execute(sqlGlobal)  # 执行sql语句
-        conn.commit()  # 提交数据操作
+        # 执行SQL语句
+        cursor.execute(sqlGlobal)
+
+        # 提交数据库操作
+        conn.commit()
     except sqlite3.OperationalError as e:
         print(e)
     except Exception as e:
         print(e)
     finally:
-        conn.close()  # 关闭数据库
+        # 关闭数据库
+        conn.close()
 
 
 # 创建我国疫情数据信息表，该函数需要封装在try中，在执行过一次后一定会出错，所以在调用时应配合将chinaDataTableInput写入finally中
@@ -76,7 +83,7 @@ def chinaDataTableCreate(databaseName):
 
     try:
         sqlChina = '''
-                    create table chinaData(
+                   create table chinaData(
                         date text primary key ,
                         nowConfirm number not null ,
                         noInfect number not null,
@@ -84,24 +91,26 @@ def chinaDataTableCreate(databaseName):
                         confirm number not null,
                         heal number not null,
                         dead number not null        
-                        )
-                        '''
+                    )
+                    '''
 
-        cursor = conn.cursor()  # 获取游标
+        cursor = conn.cursor()
         cursor.execute(sqlChina)
-        conn.commit()  # 提交数据操作
+        conn.commit()
 
     except Exception as e:
         print(e)
 
     finally:
-        conn.close()  # 关闭数据库
+        conn.close()
 
 
-# 创建我国主要省市地区当日疫情数据信息表
+"""
+    创建我国主要省市地区当日疫情数据信息表
+"""
 def chinaCityDataTableCreate(databaseName):
     conn = sqlite3.connect(databaseName)
-    today = datetime.date.today().strftime("%Y_%m_%d")  # 日期
+    today = datetime.date.today().strftime("%Y_%m_%d")
 
     try:
         sqlGlobal = '''
@@ -114,23 +123,23 @@ def chinaCityDataTableCreate(databaseName):
                             )
                             ''' % (today)
 
-        cursor = conn.cursor()  # 获取游标
-        cursor.execute(sqlGlobal)  # 执行sql语句
-        conn.commit()  # 提交数据操作
+        cursor = conn.cursor()
+        cursor.execute(sqlGlobal)
+        conn.commit()
     except sqlite3.OperationalError as e:
         print(e)
     except Exception as e:
         print(e)
     finally:
-        conn.close()  # 关闭数据库
+        conn.close()
 
 
 # 将数据写入全球当日疫情数据信息表
 def glabalDataTableInput(databaseName, dataGlobalTuple):
     conn = sqlite3.connect(databaseName)
 
-    today = datetime.date.today().strftime("%Y_%m_%d")  # 日期
-    cursor = conn.cursor()  # 获取游标
+    today = datetime.date.today().strftime("%Y_%m_%d")
+    cursor = conn.cursor()
 
     try:
         count = 0
@@ -140,8 +149,8 @@ def glabalDataTableInput(databaseName, dataGlobalTuple):
                                 values ('%s',%d,%d,%d,%d)     
                                 """ % (today, data[0], data[1], data[2], data[3], data[4])
 
-            cursor.execute(sqlGlobalInput)  # 执行sql
-            conn.commit()  # 提交数据操作
+            cursor.execute(sqlGlobalInput)
+            conn.commit()
             count += 1
             print("正在插入globalData%s表的第%d条数据" % (today, count))
 
@@ -159,7 +168,7 @@ def glabalDataTableInput(databaseName, dataGlobalTuple):
 def chinaDataTableInput(databaseName, dataChinaTuple):
     conn = sqlite3.connect(databaseName)
 
-    today = datetime.date.today().strftime("%Y_%m_%d")  # 日期
+    today = datetime.date.today().strftime("%Y_%m_%d")
 
     try:
         count = 1
@@ -171,9 +180,9 @@ def chinaDataTableInput(databaseName, dataChinaTuple):
 
         print("正在插入chinaData表的第%d条数据" % (count))
 
-        cursor = conn.cursor()  # 获取游标
+        cursor = conn.cursor()
         cursor.execute(sqlChinaInput)
-        conn.commit()  # 提交数据操作
+        conn.commit()
 
         print("\nchinaData表数据插入完毕，共插入%d条数据\n" % (count))
     except Exception as e:
@@ -186,8 +195,8 @@ def chinaDataTableInput(databaseName, dataChinaTuple):
 def chinaCityDataTableInput(databaseName, dataChinaCityTuple):
     conn = sqlite3.connect(databaseName)
 
-    today = datetime.date.today().strftime("%Y_%m_%d")  # 日期
-    cursor = conn.cursor()  # 获取游标
+    today = datetime.date.today().strftime("%Y_%m_%d")
+    cursor = conn.cursor()
 
     try:
         count = 0
@@ -197,8 +206,8 @@ def chinaCityDataTableInput(databaseName, dataChinaCityTuple):
                                     values ('%s',%d,%d,%d,%d)     
                                     """ % (today, data[0], data[1], data[2], data[3], data[4])
 
-            cursor.execute(sqlchinaCityData)  # 执行sql
-            conn.commit()  # 提交数据操作
+            cursor.execute(sqlchinaCityData)
+            conn.commit()
             count += 1
             print("正在插入chinaCityData%s表的第%d条数据" % (today, count))
 
@@ -250,7 +259,7 @@ def globalDataTableInput_text(databaseName, dataGlobalTuple):
     except Exception as e:
         print(e)
     finally:
-        conn.close()  # 关闭数据库
+        conn.close()
 
 
 def chinaDataTableInput_text(databaseName, dataChinaTuple):

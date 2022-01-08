@@ -4,9 +4,14 @@
 # @File analytical_data.py
 # @Software: PyCharm
 
-# 数据的解析
-import sys
+"""
+    数据解析
+"""
+
 import os
+
+import sys
+
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
@@ -17,15 +22,17 @@ from get_analytical import requests_data
 
 
 def jsonConvertDict(url):
-    urldata = requests_data.getUrlPost(url)  # 获取页面数据
+    # 获取页面数据
+    urldata = requests_data.getUrlPost(url)
 
     print("正在将页面源数据转换为易处理的数据结构\n")
 
-    data = json.loads(urldata)  # 将json类型转为字典
+    # 将json串转为字典
+    data = json.loads(urldata)
 
     print("转换完毕\n")
 
-    return data  # 返回处理完毕的数据
+    return data
 
 
 def analyticalDataChina(url):
@@ -70,13 +77,20 @@ def analyticalDataGlobal(url):
 
     print("正在处理获取到的国外疫情数据\n")
 
-    name = jsonpath.jsonpath(data, "$..name")  # 国家名字
-    nowConfirm = jsonpath.jsonpath(data, "$..nowConfirm")  # 现有确诊
-    confirm = jsonpath.jsonpath(data, "$..confirm")  # 累计确诊
-    heal = jsonpath.jsonpath(data, "$..heal")  # 累计治愈
-    dead = jsonpath.jsonpath(data, "$..dead")  # 累计死亡
+    # 国家名称
+    name = jsonpath.jsonpath(data, "$..name")
 
-    # print(len(name),len(nowConfirm),len(confirm),len(heal),len(dead)) #测试数据是否在数量上相匹配
+    # 现有确诊
+    nowConfirm = jsonpath.jsonpath(data, "$..nowConfirm")
+
+    # 累计确诊
+    confirm = jsonpath.jsonpath(data, "$..confirm")
+
+    # 累计治愈
+    heal = jsonpath.jsonpath(data, "$..heal")
+
+    # 累计死亡
+    dead = jsonpath.jsonpath(data, "$..dead")
 
     dataGlobalTuple = tuple(zip(name, nowConfirm, confirm, heal, dead))
 
@@ -91,9 +105,10 @@ def mergingData(urlChina, urlGlobal):
 
     print("正在合并国内外数据\n")
 
+    # 中国疫情数据会比国外疫情数据更详细，为保证数据数量上的统一性，进行一个切片，最后的逗号是为了将结果转换为一个元组的嵌套，这会方便之后我们合并两个元组
     dataChinaTuple = (
         (dataChinaTuple[0:2] + dataChinaTuple[4:]),
-    )  # 由于中国疫情数据会比国外疫情数据更详细，为保证数据数量上的统一性，进行一个切片，最后的逗号是为了将结果转换为一个元组的嵌套，这会方便之后我们合并两个元组
+    )
 
     dataFinal = dataChinaTuple + dataGlobalTuple
 

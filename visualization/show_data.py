@@ -4,22 +4,23 @@
 # @File show_data.py
 # @Software: PyCharm
 
-import sqlite3
 import datetime
-from pyecharts.charts import Map, Page, Map3D, Timeline, Line, WordCloud, MapGlobe
-from pyecharts.globals import ThemeType, ChartType
+import sqlite3
+
 from pyecharts import options as opts
+from pyecharts.charts import Map, Page, Map3D, Timeline, Line, WordCloud, MapGlobe
 from pyecharts.commons.utils import JsCode
-from get_analytical.requests_data import getUrlGet
-from pyecharts.charts import EffectScatter
+from pyecharts.globals import ThemeType, ChartType
+
 from constant import path_constant
+from get_analytical.requests_data import getUrlGet
 
 databasePath=path_constant.PathConstant.sqlPath
 
 # 数据库表数据查询
 def consultTable(tableName):
-    conn = sqlite3.connect(databasePath)  # 准备数据库
-    cursor = conn.cursor()  # 获取游标
+    conn = sqlite3.connect(databasePath)
+    cursor = conn.cursor()
     sql = """
                     select * from %s;
                 """ % (tableName)
@@ -180,8 +181,10 @@ def mapChina3d():
             border_color="rgb(62,215,213)",
 
         ),
-            is_show_ground=True,#显示地面
-            ground_color="#FAF9DE",#地面设置为白色
+            # 显示地面
+            is_show_ground=True,
+            # 将地面设置为白色
+            ground_color="#FAF9DE",
             map3d_label=opts.Map3DLabelOpts(
                 is_show=False,
                 formatter=JsCode("function(data){return data.name + " " + data.value[2];}"),
@@ -201,8 +204,10 @@ def mapChina3d():
                 ambient_intensity=0.3,
             ),
             post_effect_opts=opts.Map3DPostEffectOpts(
-                is_bloom_enable=True,  # 开启光晕特效
-                bloom_intensity=0.1,  # 设置光晕强度
+                # 开启光晕特效
+                is_bloom_enable=True,
+                # 设置光晕强度
+                bloom_intensity=0.1,
             ),
         )
             .add(
@@ -244,10 +249,7 @@ def mapGlobal():
 
     listTitle = ["现有确诊", "累计确诊", "累计治愈", "累计死亡"]
     tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient",
-                                                                      is_auto_play=True,
-                                                                      # pos_left=35,
-                                                                      # width=5,
-                                                                      # height=500,
+                                                                      is_auto_play=True
                                                                       )
     nameMap = {
         'Singapore Rep.': '新加坡',
@@ -497,18 +499,18 @@ def mapGlobal():
 
 # 全球地图（3d）
 def mapGlobal3D():
-    conn = sqlite3.connect(databasePath)  # 准备数据库
+    conn = sqlite3.connect(databasePath)
     today = datetime.date.today().strftime("%Y_%m_%d")
-    cursor = conn.cursor()  # 获取游标
+    cursor = conn.cursor()
 
     sql = """
             select * from globalData%s;
         """ % (today)
 
     cursor.execute(sql)
-    conn.commit()  # 提交数据操作
+    conn.commit()
     dataList = cursor.fetchall()
-    conn.close()  # 关闭数据库
+    conn.close()
 
     example_data = []
     for i in dataList:
@@ -724,8 +726,6 @@ def mapGlobal3D():
                                  )  # 显示国家名字
                 .render("mapGlobal.html")
                 )
-    # print(mapGlobe)
-    # return mapGlobe
 
 
 # 中国疫情数据折线图
@@ -741,15 +741,15 @@ def lineChina():
 
         tableData = []
         for j in x_data:
-            conn = sqlite3.connect(databasePath)  # 准备数据库
-            cursor = conn.cursor()  # 获取游标
+            conn = sqlite3.connect(databasePath)
+            cursor = conn.cursor()
             sql = """
             select %s from chinaData
             where date='%s'
 
                 """ % (listName, j)
             cursor.execute(sql)
-            conn.commit()  # 提交数据操作
+            conn.commit()
             tableData.append(cursor.fetchall())
             conn.close()
 
@@ -937,7 +937,3 @@ if __name__ == '__main__':
         wordCloudHero()
     )
     page.render("initial.html")
-    # mapGlobal3D()
-    # Page.save_resize_html("initial.html",
-    #                       cfg_file="chart_config.json",
-    #                       dest="finalVisualization.html")
