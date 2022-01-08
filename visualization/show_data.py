@@ -12,8 +12,9 @@ from pyecharts import options as opts
 from pyecharts.commons.utils import JsCode
 from get_analytical.requests_data import getUrlGet
 from pyecharts.charts import EffectScatter
+from constant import path_constant
 
-databasePath="C:\Code\Python\COVID-19_Data\main\COVID-19Data.db"
+databasePath=path_constant.PathConstant.sqlPath
 
 # 数据库表数据查询
 def consultTable(tableName):

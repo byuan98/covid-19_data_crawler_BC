@@ -6,6 +6,9 @@
 
 import sys
 import os
+
+import constant.path_constant
+
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
@@ -38,7 +41,7 @@ if __name__ == '__main__':
     dataChinaCityTuple = analytical_data.analyticalDataChinaCity(urlChinaCity)
 
     #准备数据库
-    databaseName = "C:\Code\Python\COVID-19_Data\main\COVID-19Data.db"
+    databaseName = constant.path_constant.PathConstant.sqlPath
 
     #数据库存储
     save_data.saveData(databaseName, dataGlobalTuple, dataChinaTuple, dataChinaCityTuple)
