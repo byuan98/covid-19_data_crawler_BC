@@ -52,10 +52,7 @@ def mapChina():
 
     listTitle = ["现有确诊", "累计确诊", "累计治愈", "累计死亡"]
     tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient",
-                                                                      is_auto_play=True,
-                                                                      # pos_left=35,
-                                                                      # width=5,
-                                                                      # height=500,
+                                                                      is_auto_play=True
                                                                       )
 
     for i in listTitle:
@@ -95,15 +92,7 @@ def mapChina():
                                                   orient="vertical",
                                                   pos_left=25,
                                                   pos_bottom=5,
-
                                                   range_text=["Max", "Min"],
-                                                  # range_color=[
-                                                  #     "#c6ffdd",
-                                                  #     "#f7797d",
-                                                  #     "#A8C0FF",
-                                                  #     "#C06C84",
-                                                  #     "#FFC0CB",
-                                                  # ],
                                                   split_number=60000,
                                                   ),
                 legend_opts=opts.LegendOpts(is_show=True,

@@ -58,11 +58,6 @@ def globalDataTableCreate(databaseName):
                         dead number not null        
                         )
                         ''' % (today)
-        # name 国名
-        # nowConfirm 现有确诊
-        # confirm 累计确诊
-        # heal 累计治愈
-        # dead 累计死亡
 
         cursor = conn.cursor()  # 获取游标
         cursor.execute(sqlGlobal)  # 执行sql语句
@@ -91,13 +86,6 @@ def chinaDataTableCreate(databaseName):
                         dead number not null        
                         )
                         '''
-        # date 时间
-        # nowConfirm 现有确诊
-        # noInfect 无症状感染者
-        # importedCase 境外输入
-        # confirm 累计确诊
-        # heal 累计治愈
-        # dead 累计死亡
 
         cursor = conn.cursor()  # 获取游标
         cursor.execute(sqlChina)
@@ -125,11 +113,6 @@ def chinaCityDataTableCreate(databaseName):
                             dead number not null        
                             )
                             ''' % (today)
-        # name 地区名
-        # nowConfirm 现有确诊
-        # confirm 累计确诊
-        # heal 累计治愈
-        # dead 累计死亡
 
         cursor = conn.cursor()  # 获取游标
         cursor.execute(sqlGlobal)  # 执行sql语句
@@ -323,16 +306,3 @@ def chinaDataTableInput_text(databaseName, dataChinaTuple):
 
 def chinaCityDataTableInput_text(databaseName, datachinaTuple):
     pass
-
-# 测试
-# if __name__ == '__main__':
-#     urlChina = "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=chinaDayList,chinaDayAddList,cityStatis,nowConfirmStatis,provinceCompare"
-#     urlGlobal = "https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist"  # 全球 除中国
-#     urlChinaCity = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&"
-#
-#     dataGlobalTuple = analytical_data.analyticalDataGlobal(urlGlobal)
-#     dataChinaTuple = analytical_data.analyticalDataChina(urlChina)
-#     dataChinaCityTuple = analytical_data.analyticalDataChinaCity(urlChinaCity)
-#
-#     databaseName = "COVID-19Data_delete.db"
-#     saveData(databaseName, dataGlobalTuple, dataChinaTuple, dataChinaCityTuple)

@@ -34,23 +34,3 @@ def getUrlGet(url):
     urlData = requests.get(url, head).json()
 
     return urlData
-
-# 测试
-# if __name__ == '__main__':
-#
-#     #url="https://voice.baidu.com/newpneumonia/get?target=trend&isCaseIn=0&stage=publish&callback=jsonp_1607218616427_31597"
-#     url="https://eyesight.news.qq.com/sars/toheros"
-#     data=getUrlGet(url)
-#     data=data["data"]
-#     data=data["allHeros"]
-#     heros=[]
-#     for i in data:
-#         hero=[]
-#         hero.append(i["name"])
-#         hero.append(i["desc"])
-#         heros.append(hero)
-#     print(heros)
-
-# https://api.inews.qq.com/newsqa/v1/query/pubished/daily/list?province=%E5%8C%97%E4%BA%AC
-
-# data=json.loads(getUrl(urlChina)) #将json类转为字典
