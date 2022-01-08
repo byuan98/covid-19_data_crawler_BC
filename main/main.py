@@ -32,7 +32,8 @@ from visualization.show_data import dataVisualization
 if __name__ == '__main__':
     #数据源
     urlChina = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&"
-    urlGlobal = "https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist"  # 全球 除中国
+    # 全球(除中国)
+    urlGlobal = "https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist"
     urlChinaCity = "https://view.inews.qq.com/g2/getOnsInfo?name=disease_h5&"
 
     #数据获取与解析
