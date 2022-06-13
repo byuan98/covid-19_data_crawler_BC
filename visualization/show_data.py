@@ -755,12 +755,12 @@ def lineChina():
 
         return tableData
 
-    dataNowConfirm = sqlChaxun(y_data[0])
-    dataNoInfect = sqlChaxun(y_data[1])
-    dataImportedCase = sqlChaxun(y_data[2])
-    dataConfirm = sqlChaxun(y_data[3])
-    dataHeal = sqlChaxun(y_data[4])
-    dataDead = sqlChaxun(y_data[5])
+    dataNowConfirm = sqlChaxun(y_data[0]) #现有确诊
+    dataNoInfect = sqlChaxun(y_data[1]) # 无症状感染者
+    dataImportedCase = sqlChaxun(y_data[2]) # 累计境外输入
+    dataConfirm = sqlChaxun(y_data[3]) # 累计确诊
+    dataHeal = sqlChaxun(y_data[4]) # 累计治愈
+    dataDead = sqlChaxun(y_data[5]) # 累计死亡
 
     c = (
         Line(init_opts=opts.InitOpts(width="100%", height="500px",bg_color="#FAF9DE"))

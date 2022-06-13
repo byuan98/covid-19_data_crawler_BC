@@ -36,8 +36,8 @@ def jsonConvertDict(url):
 
 
 def analyticalDataChina(url):
-    data = jsonConvertDict(url)
-    data = json.loads(data['data'])
+    data = dict(jsonConvertDict(url))
+    data = data['data']['diseaseh5Shelf']
 
     dataChinaList = []
 
@@ -54,9 +54,9 @@ def analyticalDataChina(url):
 
 
 def analyticalDataChinaCity(url):
-    data = jsonConvertDict(url)
+    data = dict(jsonConvertDict(url))
 
-    data = json.loads(data['data'])['areaTree']  # json.loads(data['data'])先转成字典，然后从areaTree中查看全国数据
+    data = data['data']['diseaseh5Shelf']['areaTree']  # json.loads(data['data'])先转成字典，然后从areaTree中查看全国数据
 
     dataChinaCityList = []
     for dataCity in data[0]['children']:  # 0处理字典里套的list
