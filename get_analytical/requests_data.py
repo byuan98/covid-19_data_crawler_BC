@@ -16,14 +16,8 @@ def getUrlPost(url):
 
     }
 
-    try:
-        print("正在获取页面源数据\n")
-        urlData = requests.post(url, head)
-
-    except:
-        print("post请求方式错误，已为您更改为get请求方法\n")
-        urlData = requests.get(url, head).json()
-    print("页面源数据获取成功\n")
+    print("正在获取页面源数据\n")
+    urlData = requests.post(url, head)
 
     return urlData.text
 

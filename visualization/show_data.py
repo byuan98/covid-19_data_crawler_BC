@@ -922,7 +922,7 @@ def dataVisualization():
         mapChina(),
         mapChina3d(),
         lineChina(),
-        wordCloudHero()
+        # wordCloudHero()
     )
     page.render("final.html")
 
