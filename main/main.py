@@ -23,22 +23,22 @@ from visualization.show_data import dataVisualization
 
 # 主函数，程序入口
 if __name__ == '__main__':
-    #数据源
+    # 数据源
     urlChina = "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=localCityNCOVDataList,diseaseh5Shelf"
     # 全球(除中国)
     urlGlobal = "https://api.inews.qq.com/newsqa/v1/automation/foreign/country/ranklist"
     urlChinaCity = "https://api.inews.qq.com/newsqa/v1/query/inner/publish/modules/list?modules=localCityNCOVDataList,diseaseh5Shelf"
 
-    #数据获取与解析
-    dataGlobalTuple = analytical_data.mergingData(urlChina,urlGlobal)
+    # 数据获取与解析
+    dataGlobalTuple = analytical_data.mergingData(urlChina, urlGlobal)
     dataChinaTuple = analytical_data.analyticalDataChina(urlChina)
     dataChinaCityTuple = analytical_data.analyticalDataChinaCity(urlChinaCity)
 
-    #准备数据库
+    # 准备数据库
     databaseName = constant.path_constant.PathConstant.sqlPath
 
-    #数据库存储
+    # 数据库存储
     save_data.saveData(databaseName, dataGlobalTuple, dataChinaTuple, dataChinaCityTuple)
 
-    #进行可视化
+    # 进行可视化
     dataVisualization()
