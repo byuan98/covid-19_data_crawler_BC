@@ -7,16 +7,15 @@
 import os
 import sys
 
-import constant.path_constant
-
 curPath = os.path.abspath(os.path.dirname(__file__))
 rootPath = os.path.split(curPath)[0]
 sys.path.append(rootPath)
-sys.path.append(r"C:\Software\Python\venv\Lib\site-packages")
-sys.path.append(r"C:\Code\Python\COVID-19_Data\main\COVID-19Data.db")
+sys.path.append(r"/home/zhifei/code/python/virtualenv/")
+sys.path.append(r"/home/zhifei/code/python/covid-19_data_crawler_BC/main/COVID-19Data.db")
+sys.path.append(r"/home/zhifei/code/python/covid-19_data_crawler_BC/constant")
+sys.path.append(r"/home/zhifei/code/python/virtualenv/lib/python3.10/site-packages")
 
-print(sys.path)
-
+import constant.path_constant
 from get_analytical import analytical_data
 from save import save_data
 from visualization.show_data import dataVisualization

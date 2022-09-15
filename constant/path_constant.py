@@ -12,5 +12,5 @@ class PathConstant:
     """
         数据库路径
     """
-    sqlPath = "D:\MyCode\covid-19_data_crawler_BC\main\COVID-19Data.db"
+    sqlPath = "/home/zhifei/code/python/covid-19_data_crawler_BC/main/COVID-19Data.db"
 
