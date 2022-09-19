@@ -14,3 +14,5 @@ class PathConstant:
     """
     sqlPath = "/home/zhifei/code/python/covid-19_data_crawler_BC/main/COVID-19Data.db"
 
+
+
