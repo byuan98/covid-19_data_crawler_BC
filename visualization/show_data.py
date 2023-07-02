@@ -15,7 +15,8 @@ from pyecharts.globals import ThemeType, ChartType
 from constant import path_constant
 from get_analytical.requests_data import getUrlGet
 
-databasePath=path_constant.PathConstant.sqlPath
+databasePath = path_constant.PathConstant.sqlPath
+
 
 # 数据库表数据查询
 def consultTable(tableName):
@@ -30,6 +31,7 @@ def consultTable(tableName):
     conn.close()
     return tableData
 
+
 # 寻找第二大的值
 def maxData(listData):
     listNumber = []
@@ -38,6 +40,7 @@ def maxData(listData):
     listNumber.sort()
     maxNumber = listNumber[-2]
     return maxNumber
+
 
 # 中国地图
 def mapChina():
@@ -54,8 +57,8 @@ def mapChina():
 
     listTitle = ["现有确诊", "累计确诊", "累计治愈", "累计死亡"]
     tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient",
-                                                                      is_auto_play=True
-                                                                      )
+                                                                    is_auto_play=True
+                                                                    )
 
     for i in listTitle:
         if i == "现有确诊":
@@ -76,13 +79,13 @@ def mapChina():
                                         bg_color="#FAF9DE"
                                         )
                 )
-                .add(
+            .add(
                 series_name=i,
                 data_pair=l,
                 maptype="china",
                 is_map_symbol_show=True,
             )
-                .set_global_opts(
+            .set_global_opts(
                 title_opts=opts.TitleOpts(title="中国主要省市疫情数据(%s)" % (i),
                                           pos_left="center",
                                           pos_top="10px"
@@ -102,15 +105,16 @@ def mapChina():
                                             pos_top=32,
                                             ),
             )
-                .set_series_opts(label_opts=opts.LabelOpts(is_show=True
-                                                           ),
-                                 effect_opts=opts.EffectOpts(is_show=True,
-                                                             brush_type="fill")
+            .set_series_opts(label_opts=opts.LabelOpts(is_show=True
+                                                       ),
+                             effect_opts=opts.EffectOpts(is_show=True,
+                                                         brush_type="fill")
 
-                                 )
+                             )
         )
         tl.add(map, "{}".format(i))
     return tl
+
 
 # 中国地图（3d）
 def mapChina3d():
@@ -173,8 +177,8 @@ def mapChina3d():
         i[1].append(j[1])
 
     c = (
-        Map3D(init_opts=opts.InitOpts(width="100%", height="600px",bg_color="#FAF9DE"))
-            .add_schema(itemstyle_opts=opts.ItemStyleOpts(
+        Map3D(init_opts=opts.InitOpts(width="100%", height="600px", bg_color="#FAF9DE"))
+        .add_schema(itemstyle_opts=opts.ItemStyleOpts(
             color="rgb(5,101,123)",
             opacity=1,
             border_width=0.8,
@@ -210,7 +214,7 @@ def mapChina3d():
                 bloom_intensity=0.1,
             ),
         )
-            .add(
+        .add(
             series_name="现有确诊",
             data_pair=example,
             type_=ChartType.BAR3D,
@@ -221,16 +225,17 @@ def mapChina3d():
                 formatter=JsCode("function(data){return data.name + '现存确诊：' + data.value[2];}"),
             ),
         )
-            .set_global_opts(title_opts=opts.TitleOpts(title="我国现存确诊省份",
-                                                       pos_left="center",
+        .set_global_opts(title_opts=opts.TitleOpts(title="我国现存确诊省份",
+                                                   pos_left="center",
 
-                                                       ),
-                             legend_opts=opts.LegendOpts(is_show=True,
-                                                         pos_top=32
-                                                         )
-                             )
+                                                   ),
+                         legend_opts=opts.LegendOpts(is_show=True,
+                                                     pos_top=32
+                                                     )
+                         )
     )
     return c
+
 
 # 全球地图
 def mapGlobal():
@@ -248,9 +253,7 @@ def mapGlobal():
         dataDead.append(i[0:1] + i[4:5])
 
     listTitle = ["现有确诊", "累计确诊", "累计治愈", "累计死亡"]
-    tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient",
-                                                                      is_auto_play=True
-                                                                      )
+    tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient", is_auto_play=True)
     nameMap = {
         'Singapore Rep.': '新加坡',
         'Dominican Rep.': '多米尼加',
@@ -460,42 +463,43 @@ def mapGlobal():
                                         bg_color="#FAF9DE"
                                         )
                 )
-                .add(i,
-                     data_pair=l,
-                     maptype="world",
-                     name_map=nameMap,
-                     is_map_symbol_show=True,
-                     )
-                .set_global_opts(title_opts=opts.TitleOpts(title="COVID-19全球疫情数据",
-                                                           pos_left="center",
-                                                           title_link=r"D:\Code\Final\COVID-19_Data\main\mapGlobal.html",
-                                                           title_textstyle_opts=opts.TextStyleOpts(font_size=25,
+            .add(i,
+                 data_pair=l,
+                 maptype="world",
+                 name_map=nameMap,
+                 is_map_symbol_show=True,
+                 )
+            .set_global_opts(title_opts=opts.TitleOpts(title="COVID-19全球疫情数据",
+                                                       pos_left="center",
+                                                       title_link=r"D:\Code\Final\COVID-19_Data\main\mapGlobal.html",
+                                                       title_textstyle_opts=opts.TextStyleOpts(font_size=25,
 
-                                                                                                   )
+                                                                                               )
 
-                                                           ),
-                                 visualmap_opts=opts.VisualMapOpts(max_=max1,
-                                                                   is_show=True,
-                                                                   item_height=400,
-                                                                   item_width=25,
-                                                                   orient="vertical",
-                                                                   pos_left=25,
-                                                                   pos_bottom=5,
-                                                                   range_text=["Max", "Min"],
-                                                                   ),
-                                 legend_opts=opts.LegendOpts(is_show=True,
-                                                             pos_left="center",
-                                                             pos_top=32,
-                                                             ),
-                                 )
-                .set_series_opts(label_opts=opts.LabelOpts(is_show=False,
+                                                       ),
+                             visualmap_opts=opts.VisualMapOpts(max_=max1,
+                                                               is_show=True,
+                                                               item_height=400,
+                                                               item_width=25,
+                                                               orient="vertical",
+                                                               pos_left=25,
+                                                               pos_bottom=5,
+                                                               range_text=["Max", "Min"],
+                                                               ),
+                             legend_opts=opts.LegendOpts(is_show=True,
+                                                         pos_left="center",
+                                                         pos_top=32,
+                                                         ),
+                             )
+            .set_series_opts(label_opts=opts.LabelOpts(is_show=False,
 
-                                                           ),
+                                                       ),
 
-                                 )
+                             )
         )
         tl.add(map, "{}".format(i))
     return tl
+
 
 # 全球地图（3d）
 def mapGlobal3D():
@@ -704,7 +708,7 @@ def mapGlobal3D():
         'Zimbabwe': '津巴布韦'
     }
     low, high = 6599950, 0
-    mapGlobe = (MapGlobe(init_opts=opts.InitOpts(bg_color="#228fbd",width="1500px"))
+    mapGlobe = (MapGlobe(init_opts=opts.InitOpts(bg_color="#228fbd", width="1500px"))
                 .add(name_map=nameMap,
                      maptype="world",
                      series_name="国家",
@@ -755,17 +759,17 @@ def lineChina():
 
         return tableData
 
-    dataNowConfirm = sqlChaxun(y_data[0]) #现有确诊
-    dataNoInfect = sqlChaxun(y_data[1]) # 无症状感染者
-    dataImportedCase = sqlChaxun(y_data[2]) # 累计境外输入
-    dataConfirm = sqlChaxun(y_data[3]) # 累计确诊
-    dataHeal = sqlChaxun(y_data[4]) # 累计治愈
-    dataDead = sqlChaxun(y_data[5]) # 累计死亡
+    dataNowConfirm = sqlChaxun(y_data[0])  # 现有确诊
+    dataNoInfect = sqlChaxun(y_data[1])  # 无症状感染者
+    dataImportedCase = sqlChaxun(y_data[2])  # 累计境外输入
+    dataConfirm = sqlChaxun(y_data[3])  # 累计确诊
+    dataHeal = sqlChaxun(y_data[4])  # 累计治愈
+    dataDead = sqlChaxun(y_data[5])  # 累计死亡
 
     c = (
-        Line(init_opts=opts.InitOpts(width="100%", height="500px",bg_color="#FAF9DE"))
-            .add_xaxis(xaxis_data=x_data)
-            .add_yaxis(
+        Line(init_opts=opts.InitOpts(width="100%", height="500px", bg_color="#FAF9DE"))
+        .add_xaxis(xaxis_data=x_data)
+        .add_yaxis(
             series_name="现有确诊",
             stack="总量",
             y_axis=dataNowConfirm,
@@ -780,7 +784,7 @@ def lineChina():
 
             label_opts=opts.LabelOpts(is_show=True),
         )
-            .add_yaxis(
+        .add_yaxis(
             series_name="无症状感染者",
             stack="总量",
             y_axis=dataNoInfect,
@@ -796,7 +800,7 @@ def lineChina():
             markline_opts=opts.MarkLineOpts(data=[opts.MarkAreaItem(type_="add_yaxis")])
 
         )
-            .add_yaxis(
+        .add_yaxis(
             series_name="累计境外输入",
             stack="总量",
             y_axis=dataImportedCase,
@@ -810,7 +814,7 @@ def lineChina():
             ),
             label_opts=opts.LabelOpts(is_show=True),
         )
-            .add_yaxis(
+        .add_yaxis(
             series_name="累计确诊",
             stack="总量",
             y_axis=dataConfirm,
@@ -824,7 +828,7 @@ def lineChina():
             ),
             label_opts=opts.LabelOpts(is_show=True),
         )
-            .add_yaxis(
+        .add_yaxis(
             series_name="累计治愈",
             stack="总量",
             y_axis=dataHeal,
@@ -838,7 +842,7 @@ def lineChina():
             ),
             label_opts=opts.LabelOpts(is_show=True),
         )
-            .add_yaxis(
+        .add_yaxis(
             series_name="累计死亡",
             stack="总量",
             y_axis=dataDead,
@@ -853,7 +857,7 @@ def lineChina():
             label_opts=opts.LabelOpts(is_show=True),
         )
 
-            .set_global_opts(
+        .set_global_opts(
             title_opts=opts.TitleOpts(title="中国疫情数据信息",
                                       pos_left="center"),
             tooltip_opts=opts.TooltipOpts(trigger="axis"),
@@ -894,16 +898,16 @@ def wordCloudHero():
     data = heros
 
     c = (
-        WordCloud(init_opts=opts.InitOpts(width="100%", height="500px",bg_color="#FAF9DE"))
-            .add(series_name="人民英雄",
-                 data_pair=data,
-                 word_size_range=[1, 10],
-                 word_gap=0,
-                 shape="circle",
-                 is_draw_out_of_bound=True,
-                 rotate_step=1
-                 )
-            .set_global_opts(
+        WordCloud(init_opts=opts.InitOpts(width="100%", height="500px", bg_color="#FAF9DE"))
+        .add(series_name="人民英雄",
+             data_pair=data,
+             word_size_range=[1, 10],
+             word_gap=0,
+             shape="circle",
+             is_draw_out_of_bound=True,
+             rotate_step=1
+             )
+        .set_global_opts(
             title_opts=opts.TitleOpts(
                 title_textstyle_opts=opts.TextStyleOpts(font_size=20),
                 pos_left="center",
@@ -915,6 +919,7 @@ def wordCloudHero():
     )
     return c
 
+
 def dataVisualization():
     page = Page(layout=Page.SimplePageLayout)
     page.add(
@@ -925,6 +930,7 @@ def dataVisualization():
         # wordCloudHero()
     )
     page.render("final.html")
+
 
 if __name__ == '__main__':
     # page = Page(layout=Page.DraggablePageLayout)  # 自定义布局
