@@ -225,15 +225,8 @@ def mapChina3d():
                 formatter=JsCode("function(data){return data.name + '现存确诊：' + data.value[2];}"),
             ),
         )
-        .set_global_opts(title_opts=opts.TitleOpts(title="我国现存确诊省份",
-                                                   pos_left="center",
-
-                                                   ),
-                         legend_opts=opts.LegendOpts(is_show=True,
-                                                     pos_top=32
-                                                     )
-                         )
-    )
+        .set_global_opts(title_opts=opts.TitleOpts(title="我国现存确诊省份", pos_left="center",),
+                         legend_opts=opts.LegendOpts(is_show=True,pos_top=32)))
     return c
 
 
