@@ -56,9 +56,7 @@ def mapChina():
         dataDead.append(i[0:1] + i[4:5])
 
     listTitle = ["现有确诊", "累计确诊", "累计治愈", "累计死亡"]
-    tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient",
-                                                                    is_auto_play=True
-                                                                    )
+    tl = Timeline(init_opts=opts.InitOpts(width="100%")).add_schema(orient="orient", is_auto_play=True)
 
     for i in listTitle:
         if i == "现有确诊":
