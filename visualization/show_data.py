@@ -98,12 +98,8 @@ def mapChina():
                                         pos_top=32,
                                         ),
         )
-               .set_series_opts(label_opts=opts.LabelOpts(is_show=True
-                                                          ),
-                                effect_opts=opts.EffectOpts(is_show=True,
-                                                            brush_type="fill")
-
-                                )
+               .set_series_opts(label_opts=opts.LabelOpts(is_show=True),
+                                effect_opts=opts.EffectOpts(is_show=True, brush_type="fill"))
                )
         tl.add(map, "{}".format(i))
     return tl
