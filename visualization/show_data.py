@@ -93,11 +93,7 @@ def mapChina():
                                               range_text=["Max", "Min"],
                                               split_number=60000,
                                               ),
-            legend_opts=opts.LegendOpts(is_show=True,
-                                        pos_left="center",
-                                        pos_top=32,
-                                        ),
-        )
+            legend_opts=opts.LegendOpts(is_show=True, pos_left="center", pos_top=32, ), )
                .set_series_opts(label_opts=opts.LabelOpts(is_show=True),
                                 effect_opts=opts.EffectOpts(is_show=True, brush_type="fill"))
                )
