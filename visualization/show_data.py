@@ -72,17 +72,9 @@ def mapChina():
             l = dataDead
             max1 = maxData(l)
         map = (Map(init_opts=opts.InitOpts(theme=ThemeType.WALDEN, width="100%", bg_color="#FAF9DE"))
-               .add(
-            series_name=i,
-            data_pair=l,
-            maptype="china",
-            is_map_symbol_show=True,
-        )
+               .add(series_name=i, data_pair=l, maptype="china", is_map_symbol_show=True, )
                .set_global_opts(
-            title_opts=opts.TitleOpts(title="中国主要省市疫情数据(%s)" % (i),
-                                      pos_left="center",
-                                      pos_top="10px"
-                                      ),
+            title_opts=opts.TitleOpts(title="中国主要省市疫情数据(%s)" % (i), pos_left="center", pos_top="10px"),
             visualmap_opts=opts.VisualMapOpts(max_=max1,
                                               is_show=True,
                                               item_height=400,
