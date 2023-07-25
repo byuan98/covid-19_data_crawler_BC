@@ -148,11 +148,7 @@ def mapChina3d():
     c = (
         Map3D(init_opts=opts.InitOpts(width="100%", height="600px", bg_color="#FAF9DE"))
         .add_schema(itemstyle_opts=opts.ItemStyleOpts(
-            color="rgb(5,101,123)",
-            opacity=1,
-            border_width=0.8,
-            border_color="rgb(62,215,213)",
-
+            color="rgb(5,101,123)", opacity=1, border_width=0.8, border_color="rgb(62,215,213)",
         ),
             # 显示地面
             is_show_ground=True,
