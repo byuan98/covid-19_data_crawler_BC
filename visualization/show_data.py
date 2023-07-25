@@ -157,8 +157,7 @@ def mapChina3d():
             map3d_label=opts.Map3DLabelOpts(is_show=False, formatter=JsCode(
                 "function(data){return data.name + " " + data.value[2];}"), ),
             emphasis_label_opts=opts.LabelOpts(
-                is_show=False,
-                color="#fff",
+                is_show=False, color="#fff",
                 font_size=10,
                 background_color="rgba(0,23,11,0)",
             ),
