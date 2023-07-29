@@ -413,12 +413,7 @@ def mapGlobal():
             max1 = maxData(l)
         map = (
             Map(init_opts=opts.InitOpts(theme=ThemeType.WALDEN, width="100%", height="600px", bg_color="#FAF9DE"))
-            .add(i,
-                 data_pair=l,
-                 maptype="world",
-                 name_map=nameMap,
-                 is_map_symbol_show=True,
-                 )
+            .add(i, data_pair=l, maptype="world", name_map=nameMap, is_map_symbol_show=True, )
             .set_global_opts(title_opts=opts.TitleOpts(title="COVID-19全球疫情数据",
                                                        pos_left="center",
                                                        title_link=r"D:\Code\Final\COVID-19_Data\main\mapGlobal.html",
