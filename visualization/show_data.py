@@ -417,11 +417,7 @@ def mapGlobal():
             .set_global_opts(title_opts=opts.TitleOpts(title="COVID-19全球疫情数据",
                                                        pos_left="center",
                                                        title_link=r"D:\Code\Final\COVID-19_Data\main\mapGlobal.html",
-                                                       title_textstyle_opts=opts.TextStyleOpts(font_size=25,
-
-                                                                                               )
-
-                                                       ),
+                                                       title_textstyle_opts=opts.TextStyleOpts(font_size=25,)),
                              visualmap_opts=opts.VisualMapOpts(max_=max1,
                                                                is_show=True,
                                                                item_height=400,
