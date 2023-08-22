@@ -23,7 +23,7 @@ def consultTable(tableName):
     conn = sqlite3.connect(databasePath)
     cursor = conn.cursor()
     sql = """
-                    select * from %s;
+        select * from %s;
                 """ % (tableName)
     cursor.execute(sql)
     conn.commit()  # 提交数据操作
