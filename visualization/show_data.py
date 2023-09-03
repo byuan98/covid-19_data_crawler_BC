@@ -433,7 +433,6 @@ def mapGlobal():
                                                          ),
                              )
             .set_series_opts(label_opts=opts.LabelOpts(is_show=False,
-
                                                        ),
 
                              )
