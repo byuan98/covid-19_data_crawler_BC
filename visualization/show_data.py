@@ -665,9 +665,7 @@ def mapGlobal3D():
                                                                    range_color=["lightskyblue", "yellow", "red"]
                                                                    ),
                                  )
-                .set_series_opts(label_opts=opts.LabelOpts(is_show=True
-                                                           )
-                                 )  # 显示国家名字
+                .set_series_opts(label_opts=opts.LabelOpts(is_show=True))  # 显示国家名字
                 .render("mapGlobal.html")
                 )
 
