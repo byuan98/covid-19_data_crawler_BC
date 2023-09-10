@@ -680,7 +680,6 @@ def lineChina():
         x_data.append(today)
 
     def sqlChaxun(listName):
-
         tableData = []
         for j in x_data:
             conn = sqlite3.connect(databasePath)
