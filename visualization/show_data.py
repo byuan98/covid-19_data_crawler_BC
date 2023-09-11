@@ -687,7 +687,6 @@ def lineChina():
             sql = """
             select %s from chinaData
             where date='%s'
-
                 """ % (listName, j)
             cursor.execute(sql)
             conn.commit()
