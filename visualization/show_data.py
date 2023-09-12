@@ -702,8 +702,7 @@ def lineChina():
     dataHeal = sqlChaxun(y_data[4])  # 累计治愈
     dataDead = sqlChaxun(y_data[5])  # 累计死亡
 
-    c = (
-        Line(init_opts=opts.InitOpts(width="100%", height="500px", bg_color="#FAF9DE"))
+    c = (Line(init_opts=opts.InitOpts(width="100%", height="500px", bg_color="#FAF9DE"))
         .add_xaxis(xaxis_data=x_data)
         .add_yaxis(
             series_name="现有确诊",
