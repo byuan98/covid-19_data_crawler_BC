@@ -808,11 +808,8 @@ def lineChina():
                 is_show=True,  # 是否显示工具栏组件
                 orient="vertical",
                 pos_left="left",
-
             )
-
         )
-
     )
     return c
 
