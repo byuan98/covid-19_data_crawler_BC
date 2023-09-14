@@ -803,7 +803,6 @@ def lineChina():
             xaxis_opts=opts.AxisOpts(type_="category",
                                      boundary_gap=False),
             legend_opts=opts.LegendOpts(pos_top=32),
-
             toolbox_opts=opts.ToolboxOpts(
                 is_show=True,  # 是否显示工具栏组件
                 orient="vertical",
