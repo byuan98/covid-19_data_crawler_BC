@@ -836,8 +836,7 @@ def wordCloudHero():
              word_gap=0,
              shape="circle",
              is_draw_out_of_bound=True,
-             rotate_step=1
-             )
+             rotate_step=1)
         .set_global_opts(
             title_opts=opts.TitleOpts(
                 title_textstyle_opts=opts.TextStyleOpts(font_size=20),
