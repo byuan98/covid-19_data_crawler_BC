@@ -1,4 +1,4 @@
-# -*- codeing = utf-8 -*-
+# -*- coding = utf-8 -*-
 # url地址路径常量
 # @Software: PyCharm
 # @File url_path.py

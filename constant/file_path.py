@@ -1,4 +1,4 @@
-# -*- codeing = utf-8 -*-
+# -*- coding = utf-8 -*-
 # 文件路经常量
 # @Software: PyCharm
 # @File file_path.py

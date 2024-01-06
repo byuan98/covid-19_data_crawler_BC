@@ -1,4 +1,4 @@
-# -*- codeing = utf-8 -*-
+# -*- coding = utf-8 -*-
 # 工程启动类
 # @Software: PyCharm
 # @File main.py
