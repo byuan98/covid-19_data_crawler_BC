@@ -1,4 +1,4 @@
-# -*- codeing = utf-8 -*-
+# -*- coding = utf-8 -*-
 # @Time : 2020/11/24 11:16
 # @Author : ZhangLeifeng
 # @File requests_data.py

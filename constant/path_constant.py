@@ -1,4 +1,4 @@
-# -*- codeing = utf-8 -*-
+# -*- coding = utf-8 -*-
 # @Time : 2022/1/8 19:44
 # @Author : ZhangLeifeng
 # @File path_constant.py
