@@ -37,8 +37,10 @@ if __name__ == '__main__':
         response.encoding = "utf-8"
         bs = bs4.BeautifulSoup(response.text, "html.parser")
         url_content = bs.find(id="UCAP-CONTENT").find_all("p")
+
         title = bs.title.string
         content = ""
+
         for i in url_content:
             content = content + i.get_text()
 
