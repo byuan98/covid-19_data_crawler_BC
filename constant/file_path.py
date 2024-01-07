@@ -5,4 +5,3 @@
 # @Author : ZhangBoyuan
 # @Time : 2024/1/6 下午11:24
 
-db_url = 'sqlite:///database.db'
